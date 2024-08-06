@@ -4,10 +4,8 @@ function ComWrite(props){
 
   const writeProcess = (event) => {
     event.preventDefault();
-
     let writer = event.target.writer.value;
     let comment = event.target.comment.value;
-
     // 폼값 검증
     if (writer === '') {
       alert('작성자를 입력하세요.');
@@ -19,9 +17,8 @@ function ComWrite(props){
       event.target.comment.focus();
       return;
     }
-
+    // 작성
     props.onWriteComment(writer, comment);
-
     // 작성 후 폼값 초기화
     event.target.writer.value = '';
     event.target.comment.value = '';

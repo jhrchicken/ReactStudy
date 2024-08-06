@@ -3,11 +3,10 @@ import { useState } from "react";
 import ComEdit from "./ComEdit";
 
 function ComList(props){
-
   let lists = [];
   const [showEdit, setShowEdit] = useState(false);
   const [editNo, setEditNo] = useState(null);
-
+  // 중복 수정버튼 클릭 여부 확인
   const checkEdit = (no) => {
     if (showEdit === true) {
       alert("현재 수정 mode 입니다. 수정 취소를 먼저 눌러주세요.");
@@ -16,7 +15,7 @@ function ComList(props){
       setEditNo(no);
     }
   };
-
+  // 리스트 출력
   for (let row of props.myData) {
     lists.push(
       <>
@@ -43,6 +42,7 @@ function ComList(props){
           <td colspan="3" className="subject">{row.comment}</td>
         </tr>
       </table>
+      {/* 수정폼 출력 */}
       {
         editNo !== row.no ? null  :
           <ComEdit no={row.no} writer={row.writer} comment={row.comment}

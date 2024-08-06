@@ -2,14 +2,12 @@ import React from "react";
 import {useState} from 'react';
 
 function ComEdit(props){
-
   const [writer, setWriter] = useState(props.writer);
   const [comment, setComment] = useState(props.comment);
 
   return (<>
     <form onSubmit={(event) => {
       event.preventDefault();
-
       // 폼값 검증
       if (event.target.writer.value === '') {
         alert('작성자를 입력하세요.');
@@ -21,13 +19,13 @@ function ComEdit(props){
         event.target.comment.focus();
         return;
       }
-
+      // 수정
       let writer = event.target.writer.value;
       let comment = event.target.comment.value;
       props.onEditComment(props.no, writer, comment);
       event.target.writer.value = '';
       event.target.comment.value = '';
-
+      // 수정 State 수정
       props.setShowEdit(false);
       props.setEditNo(null);
     }}>

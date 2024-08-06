@@ -16,24 +16,15 @@ function App() {
   
   // 댓글을 추가하기 위한 함수
   const addCommentProcess = (writer, comment) => {
-
-    console.log('Add Comment : ', writer);
-    console.log('Add Comment', comment);
-
     let addComment = {no: nextVal, comment:comment, writer: writer, date: '2023-08-06'};
-
     let newMyData = [...myData];
     newMyData.push(addComment);
     setMyData(newMyData);
-
     setNextVal(nextVal + 1);
   }
 
   // 댓글을 수정하기 위한 함수
   const editCommentProcess = (no, writer, comment) => {
-    console.log('Edit Comment : ', writer);
-    console.log('Edit Comment', comment);
-
     let newMyData = [...myData];
     newMyData.forEach((row) => {
       if (row.no === no) {
