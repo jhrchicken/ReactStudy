@@ -19,30 +19,34 @@ function ComList(props){
   for (let row of props.myData) {
     lists.push(
       <>
-      <table id="boardTable">
-        <tr>
-          <td>{row.no}</td>
-          <td>Writer : {row.writer}</td>
-          <td>
-            {row.date}
-            <button type="button" onClick={(event) => {
-              event.preventDefault();
-              setShowEdit(!showEdit);
-              checkEdit(row.no);
-              console.log(showEdit);
-            }}>수정</button>
-            <button type="button" onClick={() => {
-              if (window.confirm('삭제하시겠습니까?')) {
-                props.onDeleteComment(row.no);
-              }
-            }}>삭제</button>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3" className="subject">{row.comment}</td>
-        </tr>
-      </table>
-      {/* 수정폼 출력 */}
+      {/* 수정할 댓글이 아닐 경우 list 형태로 출력 */}
+      {
+        editNo === row.no ? null :
+          <table id="boardTable">
+            <tr>
+              <td>{row.no}</td>
+              <td>Writer : {row.writer}</td>
+              <td>
+                {row.date}
+                <button type="button" onClick={(event) => {
+                  event.preventDefault();
+                  setShowEdit(!showEdit);
+                  checkEdit(row.no);
+                  console.log(showEdit);
+                }}>수정</button>
+                <button type="button" onClick={() => {
+                  if (window.confirm('삭제하시겠습니까?')) {
+                    props.onDeleteComment(row.no);
+                  }
+                }}>삭제</button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" className="subject">{row.comment}</td>
+            </tr>
+          </table>
+      }
+      {/* 수정할 댓글일 경우 수정폼 출력 */}
       {
         editNo !== row.no ? null  :
           <ComEdit no={row.no} writer={row.writer} comment={row.comment}
