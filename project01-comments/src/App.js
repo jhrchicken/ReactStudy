@@ -4,7 +4,6 @@ import {useState} from 'react';
 import Board from './commons/Board';
 import ComList from './commons/ComList';
 import ComWrite from './commons/ComWrite';
-import ComEdit from './commons/ComEdit';
   
 function App() {
   const [myData, setMyData] = useState([
@@ -15,23 +14,18 @@ function App() {
 
   const [nextVal, setNextVal] = useState(4);
   
-  
-
   // 댓글을 추가하기 위한 함수
   const addCommentProcess = (writer, comment) => {
 
     console.log('Add Comment : ', writer);
     console.log('Add Comment', comment);
 
-    // 추가할 객체 생성
     let addComment = {no: nextVal, comment:comment, writer: writer, date: '2023-08-06'};
-    
-    // 추가
+
     let newMyData = [...myData];
     newMyData.push(addComment);
     setMyData(newMyData);
 
-    // 시퀀스 증가
     setNextVal(nextVal + 1);
   }
 
