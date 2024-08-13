@@ -1,3 +1,10 @@
+// 추가 기능 구현
+// 날짜 별로 끊어서 보여주기
+// 읽었을 때와 읽지 않았을 때 구분
+// 스크롤 제대로 하기
+// 한번에 여러개 보내면 사진 하나
+
+
 import React from 'react';
 import { realtime } from '../realtimeConfig';
 import { ref, child, set, onValue, push } from 'firebase/database';
